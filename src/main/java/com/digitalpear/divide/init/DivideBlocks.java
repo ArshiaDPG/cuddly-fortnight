@@ -52,6 +52,7 @@ public class DivideBlocks {
 	public static final Block WETRACK = createBlockWithItem("wetrack", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block WETRACK_BRICKS = createBlockWithItem("wetrack_bricks", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
 
+	//Muddy Wetrack?
 
 
 	public static void init(){

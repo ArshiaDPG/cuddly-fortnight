@@ -11,9 +11,9 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.Iterator;
 
-public class DivideStoneCluster extends Feature<SingleStateFeatureConfig> {
+public class WetrackClusterFeature extends Feature<SingleStateFeatureConfig> {
 
-	public DivideStoneCluster(Codec<SingleStateFeatureConfig> codec) {
+	public WetrackClusterFeature(Codec<SingleStateFeatureConfig> codec) {
 		super(codec);
 	}
 

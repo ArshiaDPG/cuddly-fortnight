@@ -2,6 +2,8 @@ package com.digitalpear.divide.init;
 
 import com.digitalpear.divide.Divide;
 import com.digitalpear.divide.init.DividePlacedFeatures;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.util.Identifier;
@@ -9,6 +11,7 @@ import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import org.jetbrains.annotations.Nullable;
@@ -32,8 +35,13 @@ public class DivideBiomeCreator {
 
 	public static Biome createShatteredLands() {
 		net.minecraft.world.biome.GenerationSettings.Builder builder = new net.minecraft.world.biome.GenerationSettings.Builder();
-		builder.feature(GenerationStep.Feature.RAW_GENERATION, DividePlacedFeatures.DIVIDE_STONE_CLUSTER);
-		return createBiome(Biome.Precipitation.NONE, 0.5F, 0.5F, new SpawnSettings.Builder(), builder, DEFAULT_MUSIC);
+		builder.feature(GenerationStep.Feature.RAW_GENERATION, DividePlacedFeatures.WETRACK_CLUSTER);
+		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.MUD_POOL);
+
+		SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+		spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMITE, 8, 2, 4));
+
+		return createBiome(Biome.Precipitation.NONE, 0.5F, 0.5F, spawnBuilder, builder, DEFAULT_MUSIC);
 	}
 
 

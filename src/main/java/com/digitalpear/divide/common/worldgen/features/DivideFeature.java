@@ -7,8 +7,8 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.SingleStateFeatureConfig;
 
 public class DivideFeature {
-	public static final Feature<SingleStateFeatureConfig> DIVIDE_STONE_CLUSTER = register("divide_stone_cluster",
-			new DivideStoneCluster(SingleStateFeatureConfig.CODEC));
+	public static final Feature<SingleStateFeatureConfig> WETRACK_CLUSTER = register("wetrack_cluster",
+			new WetrackClusterFeature(SingleStateFeatureConfig.CODEC));
 
 
 	private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
