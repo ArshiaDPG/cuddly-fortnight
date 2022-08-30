@@ -16,6 +16,22 @@ public class DividePlacedFeatures {
 			InSquarePlacementModifier.getInstance(), HeightRangePlacementModifier.createUniform(YOffset.fixed(8), YOffset.fixed(90)),
 			BiomePlacementModifier.getInstance());
 
+	public static final Holder<PlacedFeature> PATCH_GRASS = PlacedFeatureUtil.register(Divide.getId("patch_grass"),
+			DivideConfiguredFeatures.PATCH_GRASS, RarityFilterPlacementModifier.create(10),
+			InSquarePlacementModifier.getInstance(), PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.getInstance());
+
+	public static final Holder<PlacedFeature> PATCH_CRIMSON_NYLIUM = PlacedFeatureUtil.register(Divide.getId("patch_crimson_nylium"),
+			DivideConfiguredFeatures.PATCH_CRIMSON_NYLIUM, RarityFilterPlacementModifier.create(10),
+			InSquarePlacementModifier.getInstance(), PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.getInstance());
+
+	public static final Holder<PlacedFeature> PATCH_NETHERRACK = PlacedFeatureUtil.register(Divide.getId("patch_netherrack"),
+			DivideConfiguredFeatures.PATCH_NETHERRACK, RarityFilterPlacementModifier.create(10),
+			InSquarePlacementModifier.getInstance(), PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.getInstance());
+
+	public static final Holder<PlacedFeature> PATCH_END_STONE = PlacedFeatureUtil.register(Divide.getId("patch_end_stone"),
+			DivideConfiguredFeatures.PATCH_END_STONE, RarityFilterPlacementModifier.create(10),
+			InSquarePlacementModifier.getInstance(), PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.getInstance());
+
 
 	public static final Holder<PlacedFeature>  MUD_POOL = PlacedFeatureUtil.register(Divide.getId("mud_pool"), DivideConfiguredFeatures.MUD_POOL,
 			CountPlacementModifier.create(62), InSquarePlacementModifier.getInstance(),

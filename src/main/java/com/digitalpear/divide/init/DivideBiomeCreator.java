@@ -1,7 +1,7 @@
 package com.digitalpear.divide.init;
 
 import com.digitalpear.divide.Divide;
-import com.digitalpear.divide.init.DividePlacedFeatures;
+import com.digitalpear.divide.init.tags.DivideBiomeTags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.sound.BiomeMoodSound;
@@ -11,10 +11,12 @@ import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import org.jetbrains.annotations.Nullable;
+import org.quiltmc.qsl.worldgen.biome.api.BiomeSelectionContext;
+
+import java.util.function.Predicate;
 
 public class DivideBiomeCreator {
 
@@ -33,13 +35,22 @@ public class DivideBiomeCreator {
 		return (new net.minecraft.world.biome.Biome.Builder()).precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(waterColor).waterFogColor(waterFogColor).fogColor(DEFAULT_FOG_COLOR).skyColor(DEFAULT_SKY_COLOR).moodSound(BiomeMoodSound.CAVE).music(musicSound).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
 	}
 
+	private static void addEndermanPatches(net.minecraft.world.biome.GenerationSettings.Builder generationSettings) {
+		generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, DividePlacedFeatures.PATCH_GRASS);
+		generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, DividePlacedFeatures.PATCH_CRIMSON_NYLIUM);
+		generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, DividePlacedFeatures.PATCH_NETHERRACK);
+		generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, DividePlacedFeatures.PATCH_END_STONE);
+	}
+
 	public static Biome createShatteredLands() {
 		net.minecraft.world.biome.GenerationSettings.Builder builder = new net.minecraft.world.biome.GenerationSettings.Builder();
 		builder.feature(GenerationStep.Feature.RAW_GENERATION, DividePlacedFeatures.WETRACK_CLUSTER);
 		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.MUD_POOL);
+		addEndermanPatches(builder);
 
 		SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
 		spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMITE, 8, 2, 4));
+		spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMAN, 16, 1, 2));
 
 		return createBiome(Biome.Precipitation.NONE, 0.5F, 0.5F, spawnBuilder, builder, DEFAULT_MUSIC);
 	}
@@ -58,8 +69,12 @@ public class DivideBiomeCreator {
 
 	public static final RegistryKey<Biome> SHATTERED_LANDS = createBiomeKey("shattered_lands");
 
-
+	public static Predicate<BiomeSelectionContext> foundInTheDivide() {
+		return context -> context.isIn(DivideBiomeTags.IS_DIVIDE);
+	}
 	public static void init(){
 		register(SHATTERED_LANDS, createShatteredLands());
+
+//		BiomeModifications.addCarver(foundInTheDivide(), GenerationStep.Carver.AIR, ConfiguredCarvers.NETHER_CAVE);
 	}
 }

@@ -12,6 +12,6 @@ public class DivideFeature {
 
 
 	private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
-		return (F) Registry.register(Registry.FEATURE, Divide.getId(name), feature);
+		return Registry.register(Registry.FEATURE, Divide.getId(name), feature);
 	}
 }
