@@ -20,7 +20,8 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "com.digitalpear.divide.Divide"
+			"init": "com.digitalpear.divide.Divide",
+			"client_init": "com.digitalpear.divide.DivideClient"
 		},
 		"depends": [
 			{

@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "divide:wetrack",
-    "divide:wetrack_bricks"
+    "divide:wetrack_bricks",
+    "divide:amalgae_wetrack_bricks",
+    "divide:amalgae_block"
   ]
 }

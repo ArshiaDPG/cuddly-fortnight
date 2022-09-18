@@ -11,6 +11,13 @@ public class DivideRecipes {
 
 	public static void init(){
 		brickRecipe(DivideBlocks.WETRACK.asItem(), DivideBlocks.WETRACK_BRICKS.asItem());
+
+		RecipeManagerHelper.registerStaticRecipe(
+				VanillaRecipeBuilders.shapelessRecipe(new ItemStack(DivideBlocks.AMALGAE_WETRACK_BRICKS))
+						.ingredient(new ItemStack(DivideBlocks.WETRACK_BRICKS))
+						.ingredient(new ItemStack(DivideBlocks.AMALGAE_BLOCK))
+						.build(new Identifier(Divide.MOD_ID, "amalgae_wetrack_bricks"), "")
+		);
 	}
 
 	public static void brickRecipe(Item input, Item output){
@@ -20,7 +27,7 @@ public class DivideRecipes {
 				VanillaRecipeBuilders.shapedRecipe("AA", "AA")
 						.output(bracc)
 						.ingredient('A', input)
-						.build(new Identifier(Divide.MOD_ID, input.getTranslationKey()), "")
+						.build(new Identifier(Divide.MOD_ID, input.getTranslationKey().split("\\.")[2]), "")
 		);
 	}
 }
