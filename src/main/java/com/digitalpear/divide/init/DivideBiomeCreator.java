@@ -39,7 +39,10 @@ public class DivideBiomeCreator {
 	}
 
 	private static void addDivideBasicFeatures(net.minecraft.world.biome.GenerationSettings.Builder generationSettings) {
-		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.MUD_POOL);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_POOL);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_WETRACK_IRON);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_WETRACK_LAPIS);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_WETRACK_IRON_SUFFOCATED);
 	}
 	public static void addDivideBasicMobs(SpawnSettings.Builder spawnBuilder){
 		spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMITE, 8, 2, 4));

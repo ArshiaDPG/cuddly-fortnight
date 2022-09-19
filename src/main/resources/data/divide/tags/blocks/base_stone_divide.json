@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#divide:base_stone_divide"
+    "divide:wetrack"
   ]
 }

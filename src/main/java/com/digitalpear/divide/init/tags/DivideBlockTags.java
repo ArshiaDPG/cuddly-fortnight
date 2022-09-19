@@ -8,6 +8,7 @@ import net.minecraft.util.registry.Registry;
 
 public class DivideBlockTags {
 	public static final TagKey<Block> POOL_GROUND_REPLACABLES = register("pool_ground_replacables");
+	public static final TagKey<Block> BASE_STONE_DIVIDE = register("base_stone_divide");
 
 
 	private static TagKey<Block> register(String id) {

@@ -10,5 +10,6 @@ public class DivideClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient(ModContainer mod) {
 		BlockRenderLayerMap.put(RenderLayer.getCutout(), DivideBlocks.AMALGAE_BUSH);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), DivideBlocks.ENDER_CLEFT);
 	}
 }

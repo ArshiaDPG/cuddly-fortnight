@@ -1,10 +1,7 @@
 package com.digitalpear.divide.init;
 
 import com.digitalpear.divide.Divide;
-import com.digitalpear.divide.common.blocks.AmalgaeBlock;
-import com.digitalpear.divide.common.blocks.AmalgaeBushBlock;
-import com.digitalpear.divide.common.blocks.WetrackBlock;
-import com.digitalpear.divide.common.blocks.WetrackOreBlock;
+import com.digitalpear.divide.common.blocks.*;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
@@ -59,17 +56,19 @@ public class DivideBlocks {
 	public static final Block WETRACK = createBlockWithItem("wetrack", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block WETRACK_BRICKS = createBlockWithItem("wetrack_bricks", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block AMALGAE_WETRACK_BRICKS = createBlockWithItem("amalgae_wetrack_bricks", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
+
 	public static final Block AMALGAE_BLOCK = createBlockWithItem("amalgae_block", new AmalgaeBlock(AbstractBlock.Settings.copy(Blocks.MOSS_BLOCK).mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.CROP)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block AMALGAE_BUSH = createBlockWithItem("amalgae_bush", new AmalgaeBushBlock(AbstractBlock.Settings.copy(Blocks.GRASS).mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.CROP)), ItemGroup.DECORATIONS);
 
-	//ADD WETRACK ORES
 	public static final Block WETRACK_LAPIS_ORE = createBlockWithItem("wetrack_lapis_ore",
 			new WetrackOreBlock(createWetrackBlock(Blocks.DEEPSLATE_LAPIS_ORE),
-			UniformIntProvider.create(2, 5)), ItemGroup.BUILDING_BLOCKS);
-
+					UniformIntProvider.create(2, 5)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block WETRACK_IRON_ORE = createBlockWithItem("wetrack_iron_ore",
 			new WetrackOreBlock(createWetrackBlock(Blocks.DEEPSLATE_IRON_ORE),
 					UniformIntProvider.create(0, 3)), ItemGroup.BUILDING_BLOCKS);
+
+	public static final Block ENDER_CLEFT = createBlockWithItem("ender_cleft", new EnderCleftBlock(AbstractBlock.Settings.of(Material.METAL, MapColor.CYAN)
+			.strength(12f, 200f).sounds(BlockSoundGroup.COPPER).requiresTool().nonOpaque().luminance(state -> 9)), ItemGroup.DECORATIONS);
 
 
 	public static void init(){

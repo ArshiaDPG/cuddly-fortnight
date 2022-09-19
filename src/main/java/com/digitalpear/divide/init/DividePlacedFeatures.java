@@ -4,10 +4,15 @@ import com.digitalpear.divide.Divide;
 import net.minecraft.util.Holder;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.decorator.*;
+import net.minecraft.world.gen.feature.OceanConfiguredFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.gen.feature.PlacementModifier;
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil;
+
+import java.util.List;
 
 public class DividePlacedFeatures {
 
@@ -30,14 +35,34 @@ public class DividePlacedFeatures {
 			InSquarePlacementModifier.getInstance(), PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.getInstance());
 
 
-	public static final Holder<PlacedFeature>  MUD_POOL = PlacedFeatureUtil.register(Divide.getId("mud_pool"), DivideConfiguredFeatures.MUD_POOL,
+	public static final Holder<PlacedFeature> AMALGAE_POOL = PlacedFeatureUtil.register(Divide.getId("mud_pool"), DivideConfiguredFeatures.AMALGAE_POOL,
 			CountPlacementModifier.create(62), InSquarePlacementModifier.getInstance(),
 			PlacedFeatureUtil.BOTTOM_TO_MAX_TERRAIN_HEIGHT_RANGE, EnvironmentScanPlacementModifier.create(Direction.DOWN, BlockPredicate.solid(),
 			BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertical(ConstantIntProvider.create(1)),
 			BiomePlacementModifier.getInstance());
 
 
+	public static final Holder<PlacedFeature> ORE_WETRACK_LAPIS = PlacedFeatureUtil.register(Divide.getId("ore_wetrack_lapis"), DivideConfiguredFeatures.ORE_WETRACK_LAPIS,
+			commonOrePlacementModifiers(40, HeightRangePlacementModifier.createUniform(YOffset.getBottom(), YOffset.getTop())));
+	public static final Holder<PlacedFeature> ORE_WETRACK_IRON = PlacedFeatureUtil.register(Divide.getId("ore_wetrack_iron"), DivideConfiguredFeatures.ORE_WETRACK_IRON,
+			commonOrePlacementModifiers(16, HeightRangePlacementModifier.createUniform(YOffset.getBottom(), YOffset.getTop())));
+	public static final Holder<PlacedFeature> ORE_WETRACK_IRON_SUFFOCATED = PlacedFeatureUtil.register(Divide.getId("ore_wetrack_iron_suffocated"), DivideConfiguredFeatures.ORE_WETRACK_IRON_SUFFOCATED,
+			commonOrePlacementModifiers(20, HeightRangePlacementModifier.createUniform(YOffset.getBottom(), YOffset.getTop())));
+
+	public static final Holder<PlacedFeature> AMALGAE_BUSH = PlacedFeatureUtil.register(Divide.getId("amalgae_bush"), DivideConfiguredFeatures.AMALGAE_BUSH,
+			RarityFilterPlacementModifier.create(16), InSquarePlacementModifier.getInstance(),
+			PlacedFeatureUtil.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.getInstance());
+
+
+	private static List<PlacementModifier> commonOrePlacementModifiers(int count, PlacementModifier modifier) {
+		return orePlacementModifiers(CountPlacementModifier.create(count), modifier);
+	}
+	private static List<PlacementModifier> orePlacementModifiers(PlacementModifier firstModifier, PlacementModifier secondModifier) {
+		return List.of(firstModifier, InSquarePlacementModifier.getInstance(), secondModifier, BiomePlacementModifier.getInstance());
+	}
+
 	public static void init(){
+
 
 	}
 }

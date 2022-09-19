@@ -1,5 +1,6 @@
 package com.digitalpear.divide.common.blocks;
 
+import com.digitalpear.divide.init.DivideConfiguredFeatures;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
@@ -8,8 +9,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.UndergroundConfiguredFeatures;
 
 public class AmalgaeBlock extends Block implements Fertilizable {
 	public AmalgaeBlock(Settings settings) {
@@ -25,6 +24,6 @@ public class AmalgaeBlock extends Block implements Fertilizable {
 	}
 
 	public void grow(ServerWorld world, RandomGenerator random, BlockPos pos, BlockState state) {
-		((ConfiguredFeature) UndergroundConfiguredFeatures.MOSS_PATCH_BONEMEAL.value()).generate(world, world.getChunkManager().getChunkGenerator(), random, pos.up());
+		DivideConfiguredFeatures.AMALGAE_BUSH_BONEMEAL.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos.up());
 	}
 }
