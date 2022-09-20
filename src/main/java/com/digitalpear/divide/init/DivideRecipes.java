@@ -1,6 +1,7 @@
 package com.digitalpear.divide.init;
 
 import com.digitalpear.divide.Divide;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -21,6 +22,17 @@ public class DivideRecipes {
 						.ingredient(new ItemStack(DivideBlocks.WETRACK_BRICKS))
 						.ingredient(new ItemStack(DivideBlocks.AMALGAE_BLOCK))
 						.build(new Identifier(Divide.MOD_ID, "amalgae_wetrack_bricks"), "")
+		);
+		RecipeManagerHelper.registerStaticRecipe(
+				VanillaRecipeBuilders.shapedRecipe(
+						"I I",
+								"BEB",
+								"BBB")
+						.output(new ItemStack(DivideBlocks.ENDER_CLEFT))
+						.ingredient('I', Items.IRON_INGOT)
+						.ingredient('B', Blocks.IRON_BLOCK)
+						.ingredient('E', Items.ENDER_EYE)
+						.build(new Identifier(Divide.MOD_ID, "ender_cleft"), "")
 		);
 
 	}
