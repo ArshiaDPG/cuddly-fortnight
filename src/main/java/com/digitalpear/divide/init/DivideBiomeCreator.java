@@ -1,6 +1,7 @@
 package com.digitalpear.divide.init;
 
 import com.digitalpear.divide.Divide;
+import com.digitalpear.divide.common.worldgen.DivideDimensions;
 import com.digitalpear.divide.init.tags.DivideBiomeTags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -12,6 +13,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.dimension.DimensionOptions;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.EndPlacedFeatures;
 import net.minecraft.world.gen.feature.NetherPlacedFeatures;
@@ -39,6 +41,7 @@ public class DivideBiomeCreator {
 	}
 
 	private static void addDivideBasicFeatures(net.minecraft.world.biome.GenerationSettings.Builder generationSettings) {
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_SWAMPLANDS_VEGETATION);
 		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_POOL);
 		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_WETRACK_IRON);
 		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_WETRACK_LAPIS);
@@ -88,7 +91,5 @@ public class DivideBiomeCreator {
 	}
 	public static void init(){
 		register(AMALGAE_SWAMPLANDS, createAlgaeSwamplands());
-
-//		BiomeModifications.addCarver(foundInTheDivide(), GenerationStep.Carver.AIR, ConfiguredCarvers.CAVE.getKey().get());
 	}
 }

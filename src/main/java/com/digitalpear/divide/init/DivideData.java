@@ -10,4 +10,5 @@ public class DivideData {
 	public static void registerUnwetting(Block input, Block result){
 		UNWETTING_MAP.put(input, result);
 	}
+
 }

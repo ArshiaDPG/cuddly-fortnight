@@ -7,9 +7,9 @@ import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.decorator.*;
-import net.minecraft.world.gen.feature.OceanConfiguredFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacementModifier;
+import net.minecraft.world.gen.feature.UndergroundConfiguredFeatures;
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class DividePlacedFeatures {
 
 
 	public static final Holder<PlacedFeature> AMALGAE_POOL = PlacedFeatureUtil.register(Divide.getId("mud_pool"), DivideConfiguredFeatures.AMALGAE_POOL,
-			CountPlacementModifier.create(62), InSquarePlacementModifier.getInstance(),
+			CountPlacementModifier.create(20), InSquarePlacementModifier.getInstance(),
 			PlacedFeatureUtil.BOTTOM_TO_MAX_TERRAIN_HEIGHT_RANGE, EnvironmentScanPlacementModifier.create(Direction.DOWN, BlockPredicate.solid(),
 			BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertical(ConstantIntProvider.create(1)),
 			BiomePlacementModifier.getInstance());
@@ -49,9 +49,12 @@ public class DividePlacedFeatures {
 	public static final Holder<PlacedFeature> ORE_WETRACK_IRON_SUFFOCATED = PlacedFeatureUtil.register(Divide.getId("ore_wetrack_iron_suffocated"), DivideConfiguredFeatures.ORE_WETRACK_IRON_SUFFOCATED,
 			commonOrePlacementModifiers(20, HeightRangePlacementModifier.createUniform(YOffset.getBottom(), YOffset.getTop())));
 
-	public static final Holder<PlacedFeature> AMALGAE_BUSH = PlacedFeatureUtil.register(Divide.getId("amalgae_bush"), DivideConfiguredFeatures.AMALGAE_BUSH,
-			RarityFilterPlacementModifier.create(16), InSquarePlacementModifier.getInstance(),
-			PlacedFeatureUtil.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.getInstance());
+
+	public static final Holder<PlacedFeature> AMALGAE_SWAMPLANDS_VEGETATION = PlacedFeatureUtil.register(Divide.getId("amalgae_swamplands_vegetation"),
+			DivideConfiguredFeatures.AMALGAE_PATCH, CountPlacementModifier.create(40), InSquarePlacementModifier.getInstance(),
+			PlacedFeatureUtil.BOTTOM_TO_MAX_TERRAIN_HEIGHT_RANGE, EnvironmentScanPlacementModifier.create(Direction.DOWN, BlockPredicate.solid(),
+					BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertical(ConstantIntProvider.create(1)), BiomePlacementModifier.getInstance());
+
 
 
 	private static List<PlacementModifier> commonOrePlacementModifiers(int count, PlacementModifier modifier) {

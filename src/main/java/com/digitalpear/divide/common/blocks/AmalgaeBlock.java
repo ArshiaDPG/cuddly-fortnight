@@ -24,6 +24,6 @@ public class AmalgaeBlock extends Block implements Fertilizable {
 	}
 
 	public void grow(ServerWorld world, RandomGenerator random, BlockPos pos, BlockState state) {
-		DivideConfiguredFeatures.AMALGAE_BUSH_BONEMEAL.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos.up());
+		DivideConfiguredFeatures.AMALGAE_PATCH_BONEMEAL.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos.up());
 	}
 }
