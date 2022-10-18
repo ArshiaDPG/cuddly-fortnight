@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "divide:block/wetrack_pressure_plate"
+    },
+    "powered=true": {
+      "model": "divide:block/wetrack_pressure_plate_down"
+    }
+  }
+}

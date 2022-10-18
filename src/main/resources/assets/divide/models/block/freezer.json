@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "divide:block/freezer_front",
+    "north": "divide:block/freezer_front",
+    "south": "divide:block/freezer_side",
+    "east": "divide:block/freezer_side",
+    "west": "divide:block/freezer_side",
+    "up": "divide:block/freezer_top",
+    "down": "divide:block/wetrack_bricks"
+  }
+}

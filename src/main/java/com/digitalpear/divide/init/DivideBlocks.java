@@ -15,12 +15,13 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
 
 public class DivideBlocks {
+	public static MapColor WETRACK_COLOR = MapColor.DARK_AQUA;
 
 	public static AbstractBlock.Settings createWetrackBlock(){
-		return AbstractBlock.Settings.of(Material.STONE, MapColor.DARK_AQUA).strength(Blocks.DEEPSLATE.getHardness() - 0.1f, Blocks.DEEPSLATE.getBlastResistance() + 12f).requiresTool().sounds(BlockSoundGroup.DRIPSTONE_BLOCK);
+		return AbstractBlock.Settings.of(Material.STONE, WETRACK_COLOR).strength(Blocks.DEEPSLATE.getHardness() - 0.1f, Blocks.DEEPSLATE.getBlastResistance() + 12f).requiresTool().sounds(BlockSoundGroup.DRIPSTONE_BLOCK);
 	}
 	public static AbstractBlock.Settings createWetrackBlock(Block base) {
-		return AbstractBlock.Settings.of(Material.STONE, MapColor.DARK_AQUA).strength(base.getHardness() - 0.1f, base.getBlastResistance() + 12f).requiresTool().sounds(BlockSoundGroup.DRIPSTONE_BLOCK);
+		return AbstractBlock.Settings.of(Material.STONE, WETRACK_COLOR).strength(base.getHardness() - 0.1f, base.getBlastResistance() + 12f).requiresTool().sounds(BlockSoundGroup.DRIPSTONE_BLOCK);
 	}
 
 	public static LeavesBlock createLeavesBlock(BlockSoundGroup soundGroup) {
@@ -67,8 +68,27 @@ public class DivideBlocks {
 			new WetrackOreBlock(createWetrackBlock(Blocks.DEEPSLATE_IRON_ORE),
 					UniformIntProvider.create(0, 3)), ItemGroup.BUILDING_BLOCKS);
 
+
+	public static final Block WETRACK_BUTTON = createBlockWithItem("wetrack_button",
+			new StoneButtonBlock(AbstractBlock.Settings.of(Material.STONE).noCollision().strength(1.0F).mapColor(WETRACK_COLOR).sounds(BlockSoundGroup.DRIPSTONE_BLOCK)), ItemGroup.REDSTONE);
+	public static final Block WETRACK_PRESSURE_PLATE = createBlockWithItem("wetrack_pressure_plate",
+			new PressurePlateBlock(PressurePlateBlock.ActivationRule.MOBS,
+					AbstractBlock.Settings.of(Material.STONE).requiresTool().noCollision().strength(1.0F).mapColor(WETRACK_COLOR).sounds(BlockSoundGroup.DRIPSTONE_BLOCK)), ItemGroup.REDSTONE);
+
+
 	public static final Block ENDER_CLEFT = createBlockWithItem("ender_cleft", new EnderCleftBlock(AbstractBlock.Settings.of(Material.METAL, MapColor.CYAN)
 			.strength(12f, 200f).sounds(BlockSoundGroup.COPPER).requiresTool().nonOpaque().luminance(state -> 9)), ItemGroup.DECORATIONS);
+
+
+	public static final Block FREEZER = createBlockWithItem("freezer",
+			new FreezerBlock(AbstractBlock.Settings.of(Material.METAL).strength(2.0f, 7.0f)
+					.mapColor(MapColor.GRAY).sounds(BlockSoundGroup.METAL).requiresTool()), ItemGroup.DECORATIONS);
+
+
+	public static final Block COLD_OBSIDIAN = createBlockWithItem("cold_obsidian", new ColdObsidianBlock(AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+			.slipperiness(0.989F).mapColor(MapColor.LIGHT_BLUE)), ItemGroup.BUILDING_BLOCKS);
+
+
 
 
 	public static void init(){
@@ -78,6 +98,7 @@ public class DivideBlocks {
 
 		DivideData.registerUnwetting(WETRACK_LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE);
 		DivideData.registerUnwetting(WETRACK_IRON_ORE, Blocks.DEEPSLATE_IRON_ORE);
+
 	}
 
 }

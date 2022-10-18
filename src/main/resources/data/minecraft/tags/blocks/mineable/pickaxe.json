@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "divide:wetrack",
+    "divide:wetrack_button",
+    "divide:wetrack_pressure_plate",
     "divide:wetrack_iron_ore",
     "divide:wetrack_lapis_ore",
     "divide:wetrack_bricks",

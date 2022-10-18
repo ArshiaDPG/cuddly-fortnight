@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class DivideItemTags {
-//	public static final TagKey<Item> POOL_GROUND_REPLACABLES = register("pool_ground_replacables");
+	public static final TagKey<Item> BUCKET_DISPENSABLES = register("bucket_dispensables");
 
 
 	private static TagKey<Item> register(String id) {

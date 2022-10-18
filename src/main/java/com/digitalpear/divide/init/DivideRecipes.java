@@ -16,6 +16,8 @@ public class DivideRecipes {
 		brickRecipe(DivideBlocks.WETRACK.asItem(), DivideBlocks.WETRACK_BRICKS.asItem());
 		smeltOre(DivideBlocks.WETRACK_IRON_ORE.asItem(), Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
 		smeltOre(DivideBlocks.WETRACK_LAPIS_ORE.asItem(), Items.LAPIS_LAZULI, 0.2f, 200, "lapis_lazuli");
+		pressurePlateRecipe(DivideBlocks.WETRACK.asItem(), DivideBlocks.WETRACK_PRESSURE_PLATE.asItem());
+
 
 		RecipeManagerHelper.registerStaticRecipe(
 				VanillaRecipeBuilders.shapelessRecipe(new ItemStack(DivideBlocks.AMALGAE_WETRACK_BRICKS))
@@ -24,17 +26,21 @@ public class DivideRecipes {
 						.build(new Identifier(Divide.MOD_ID, "amalgae_wetrack_bricks"), "")
 		);
 		RecipeManagerHelper.registerStaticRecipe(
-				VanillaRecipeBuilders.shapedRecipe(
-						"I I",
-								"BEB",
-								"BBB")
-						.output(new ItemStack(DivideBlocks.ENDER_CLEFT))
-						.ingredient('I', Items.IRON_INGOT)
-						.ingredient('B', Blocks.IRON_BLOCK)
-						.ingredient('E', Items.ENDER_EYE)
-						.build(new Identifier(Divide.MOD_ID, "ender_cleft"), "")
+				VanillaRecipeBuilders.shapelessRecipe(new ItemStack(DivideBlocks.WETRACK_BUTTON))
+						.ingredient(new ItemStack(DivideBlocks.WETRACK))
+						.build(new Identifier(Divide.MOD_ID, "wetrack_button"), "")
 		);
-
+//		RecipeManagerHelper.registerStaticRecipe(
+//				VanillaRecipeBuilders.shapedRecipe(
+//						"I I",
+//						"BEB",
+//						"BBB")
+//						.output(new ItemStack(DivideBlocks.ENDER_CLEFT))
+//						.ingredient('I', Items.IRON_INGOT)
+//						.ingredient('B', Blocks.IRON_BLOCK)
+//						.ingredient('E', Items.ENDER_EYE)
+//						.build(new Identifier(Divide.MOD_ID, "ender_cleft"), "")
+//		);
 	}
 
 	public static void brickRecipe(Item input, Item output){
@@ -44,7 +50,16 @@ public class DivideRecipes {
 				VanillaRecipeBuilders.shapedRecipe("AA", "AA")
 						.output(bracc)
 						.ingredient('A', input)
-						.build(new Identifier(Divide.MOD_ID, input.getTranslationKey().split("\\.")[2]), "")
+						.build(new Identifier(Divide.MOD_ID, output.getTranslationKey().split("\\.")[2]), "")
+		);
+	}
+	public static void pressurePlateRecipe(Item input, Item output){
+		ItemStack butt = new ItemStack(output);
+		RecipeManagerHelper.registerStaticRecipe(
+				VanillaRecipeBuilders.shapedRecipe("AA")
+						.output(butt)
+						.ingredient('A', input)
+						.build(new Identifier(Divide.MOD_ID, output.getTranslationKey().split("\\.")[2]), "")
 		);
 	}
 

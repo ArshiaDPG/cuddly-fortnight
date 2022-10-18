@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 
 public class DivideDimensions {
+
 	public static final RegistryKey<World> DIVIDE_KEY = RegistryKey.of(Registry.WORLD_KEY,
 			new Identifier(Divide.MOD_ID, "divide"));
 	public static final RegistryKey<DimensionType> DIVIDE_TYPE_KEY = RegistryKey.of(Registry.DIMENSION_TYPE_KEY,

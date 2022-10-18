@@ -2,6 +2,9 @@ package com.digitalpear.divide;
 
 import com.digitalpear.divide.init.*;
 import com.digitalpear.divide.common.worldgen.DivideDimensions;
+import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
+import net.minecraft.item.Items;
+import net.minecraft.util.Identifier;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
@@ -24,6 +27,13 @@ public class Divide implements ModInitializer {
 		DivideBiomeCreator.init();
 		DivideDimensions.init();
 		DivideRecipes.init();
+
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(DivideBlocks.COLD_OBSIDIAN)
+				.lightWithItem(Items.ENDER_EYE)
+				.destDimID(new Identifier(getId("divide")))
+				.tintColor(2136993)
+				.registerPortal();
 
 		LOGGER.info("Hello Quilt world from {}!", mod.metadata().name());
 	}

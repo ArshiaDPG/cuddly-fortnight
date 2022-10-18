@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "divide:block/freezer",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "divide:block/freezer"
+    },
+    "facing=south": {
+      "model": "divide:block/freezer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "divide:block/freezer",
+      "y": 270
+    }
+  }
+}

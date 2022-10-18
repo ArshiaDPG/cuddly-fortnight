@@ -3,14 +3,20 @@ package com.digitalpear.divide.init;
 import com.digitalpear.divide.Divide;
 import com.digitalpear.divide.common.worldgen.features.DivideFeature;
 import com.digitalpear.divide.init.tags.DivideBlockTags;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.structure.rule.BlockMatchRuleTest;
+import net.minecraft.structure.rule.BlockStateMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Holder;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
+import net.minecraft.util.math.floatprovider.ClampedNormalFloatProvider;
+import net.minecraft.util.math.floatprovider.UniformFloatProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -28,22 +34,24 @@ import java.util.List;
 
 public class DivideConfiguredFeatures {
 	public static final RuleTest BASE_STONE_DIVIDE = new TagMatchRuleTest(DivideBlockTags.BASE_STONE_DIVIDE);
+	public static final RuleTest OBSIDIAN = new BlockMatchRuleTest(Blocks.END_STONE);
+	public static final List<Block> PATCH_BLOCKS = List.of(DivideBlocks.AMALGAE_BLOCK, DivideBlocks.WETRACK);
 
 	public static final Holder<ConfiguredFeature<RandomPatchFeatureConfig, ?>> PATCH_GRASS = register("patch_grass",
 			Feature.RANDOM_PATCH, ConfiguredFeatureUtil.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK,
-					new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.GRASS_BLOCK)), List.of(Blocks.MUD, DivideBlocks.WETRACK)));
+					new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.GRASS_BLOCK)), PATCH_BLOCKS));
 
 	public static final Holder<ConfiguredFeature<RandomPatchFeatureConfig, ?>> PATCH_WARPED_NYLIUM = register("patch_warped_nylium",
 			Feature.RANDOM_PATCH, ConfiguredFeatureUtil.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK,
-					new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.WARPED_NYLIUM)), List.of(Blocks.MUD, DivideBlocks.WETRACK)));
+					new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.WARPED_NYLIUM)), PATCH_BLOCKS));
 
 	public static final Holder<ConfiguredFeature<RandomPatchFeatureConfig, ?>> PATCH_CRIMSON_NYLIUM = register("patch_crimson_nylium",
 			Feature.RANDOM_PATCH, ConfiguredFeatureUtil.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK,
-					new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.CRIMSON_NYLIUM)), List.of(Blocks.MUD, DivideBlocks.WETRACK)));
+					new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.CRIMSON_NYLIUM)), PATCH_BLOCKS));
 
 	public static final Holder<ConfiguredFeature<RandomPatchFeatureConfig, ?>> PATCH_END_STONE = register("patch_end_stone",
 			Feature.RANDOM_PATCH, ConfiguredFeatureUtil.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK,
-					new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.END_STONE)), List.of(Blocks.MUD, DivideBlocks.WETRACK)));
+					new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.END_STONE)), PATCH_BLOCKS));
 
 	public static final Holder<ConfiguredFeature<CountConfig, ?>> PATCH_AMALGAE_BUSH = register("patch_amalgae_bush",
 			DivideFeature.AMALGAE_BUSH, new CountConfig(6));
@@ -79,6 +87,17 @@ public class DivideConfiguredFeatures {
 
 	public static final Holder<ConfiguredFeature<OreFeatureConfig, ?>> ORE_WETRACK_IRON_SUFFOCATED = register("ore_wetrack_iron_suffocated",
 			Feature.ORE, new OreFeatureConfig(BASE_STONE_DIVIDE, DivideBlocks.WETRACK_IRON_ORE.getDefaultState(), 24, 1.0F));
+
+	public static final Holder<ConfiguredFeature<OreFeatureConfig, ?>> ORE_COLD_OBSIDIAN = register("ore_cold_obsidian",
+			Feature.SCATTERED_ORE, new OreFeatureConfig(OBSIDIAN, DivideBlocks.COLD_OBSIDIAN.getDefaultState(), 8));
+
+
+	public static final Holder<ConfiguredFeature<BasaltColumnsFeatureConfig, ?>> WETRACK_SPIKE = register("wetrack_spike",
+			DivideFeature.WETRACK_SPIKE, new BasaltColumnsFeatureConfig(UniformIntProvider.create(2, 3), UniformIntProvider.create(5, 10)));
+
+	public static final Holder<ConfiguredFeature<DripstoneClusterFeatureConfig, ?>> OBSIDIAN_CLUSTER = register("obsidian_cluster",
+			DivideFeature.OBSIDIAN_CLUSTER, new DripstoneClusterFeatureConfig(12, UniformIntProvider.create(3, 6), UniformIntProvider.create(2, 8), 1, 3,
+					UniformIntProvider.create(2, 4), UniformFloatProvider.create(0.3F, 0.7F), ClampedNormalFloatProvider.create(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
 
 
 	public static <FC extends FeatureConfig, F extends Feature<FC>> Holder register(String id, F feature, FC featureConfig) {
