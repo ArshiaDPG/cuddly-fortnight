@@ -58,10 +58,11 @@ public class DividePlacedFeatures {
 
 
 	public static final Holder<PlacedFeature> AMALGAE_SWAMPLANDS_VEGETATION = PlacedFeatureUtil.register(Divide.getId("amalgae_swamplands_vegetation"),
-			DivideConfiguredFeatures.AMALGAE_PATCH, CountPlacementModifier.create(40), InSquarePlacementModifier.getInstance(),
+			DivideConfiguredFeatures.AMALGAE_PATCH, CountPlacementModifier.create(12), InSquarePlacementModifier.getInstance(),
 			PlacedFeatureUtil.BOTTOM_TO_MAX_TERRAIN_HEIGHT_RANGE, EnvironmentScanPlacementModifier.create(Direction.DOWN, BlockPredicate.solid(),
 					BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertical(ConstantIntProvider.create(1)), BiomePlacementModifier.getInstance());
 
+	
 	public static final Holder<PlacedFeature> WETRACK_SPIKE = PlacedFeatureUtil.register(Divide.getId("wetrack_spike"),
 			DivideConfiguredFeatures.WETRACK_SPIKE, CountOnEveryLayerPlacementModifier.create(2), BiomePlacementModifier.getInstance());
 

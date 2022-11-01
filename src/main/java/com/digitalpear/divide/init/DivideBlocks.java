@@ -15,7 +15,9 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
 
 public class DivideBlocks {
-	public static MapColor WETRACK_COLOR = MapColor.DARK_AQUA;
+	public static MapColor WETRACK_COLOR = MapColor.PALE_PURPLE;
+
+	public static MapColor AMALGAE_COLOR = MapColor.PALE_YELLOW;
 
 	public static AbstractBlock.Settings createWetrackBlock(){
 		return AbstractBlock.Settings.of(Material.STONE, WETRACK_COLOR).strength(Blocks.DEEPSLATE.getHardness() - 0.1f, Blocks.DEEPSLATE.getBlastResistance() + 12f).requiresTool().sounds(BlockSoundGroup.DRIPSTONE_BLOCK);
@@ -56,10 +58,13 @@ public class DivideBlocks {
 
 	public static final Block WETRACK = createBlockWithItem("wetrack", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block WETRACK_BRICKS = createBlockWithItem("wetrack_bricks", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
-	public static final Block AMALGAE_WETRACK_BRICKS = createBlockWithItem("amalgae_wetrack_bricks", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
 
-	public static final Block AMALGAE_BLOCK = createBlockWithItem("amalgae_block", new AmalgaeBlock(AbstractBlock.Settings.copy(Blocks.MOSS_BLOCK).mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.CROP)), ItemGroup.BUILDING_BLOCKS);
-	public static final Block AMALGAE_BUSH = createBlockWithItem("amalgae_bush", new AmalgaeBushBlock(AbstractBlock.Settings.copy(Blocks.GRASS).mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.CROP)), ItemGroup.DECORATIONS);
+
+
+	public static final Block AMALGAE_BLOCK = createBlockWithItem("amalgae_block", new AmalgaeBlock(AbstractBlock.Settings.copy(Blocks.MOSS_BLOCK).mapColor(AMALGAE_COLOR).sounds(BlockSoundGroup.CROP)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block AMALGAE_BUSH = createBlockWithItem("amalgae_bush", new AmalgaeBushBlock(AbstractBlock.Settings.copy(Blocks.GRASS).mapColor(AMALGAE_COLOR).sounds(BlockSoundGroup.CROP)), ItemGroup.DECORATIONS);
+	public static final Block AMALGAE_ROOTS = createBlockWithItem("amalgae_roots", new AmalgaeRootsBlock(AbstractBlock.Settings.copy(Blocks.GLOW_LICHEN).mapColor(AMALGAE_COLOR)), ItemGroup.BUILDING_BLOCKS);
+
 
 	public static final Block WETRACK_LAPIS_ORE = createBlockWithItem("wetrack_lapis_ore",
 			new WetrackOreBlock(createWetrackBlock(Blocks.DEEPSLATE_LAPIS_ORE),
@@ -91,11 +96,10 @@ public class DivideBlocks {
 
 
 
+
 	public static void init(){
 		DivideData.registerUnwetting(WETRACK, Blocks.COBBLED_DEEPSLATE);
 		DivideData.registerUnwetting(WETRACK_BRICKS, Blocks.DEEPSLATE_BRICKS);
-		DivideData.registerUnwetting(AMALGAE_WETRACK_BRICKS, Blocks.DEEPSLATE_BRICKS);
-
 		DivideData.registerUnwetting(WETRACK_LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE);
 		DivideData.registerUnwetting(WETRACK_IRON_ORE, Blocks.DEEPSLATE_IRON_ORE);
 

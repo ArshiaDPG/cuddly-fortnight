@@ -20,27 +20,10 @@ public class DivideRecipes {
 
 
 		RecipeManagerHelper.registerStaticRecipe(
-				VanillaRecipeBuilders.shapelessRecipe(new ItemStack(DivideBlocks.AMALGAE_WETRACK_BRICKS))
-						.ingredient(new ItemStack(DivideBlocks.WETRACK_BRICKS))
-						.ingredient(new ItemStack(DivideBlocks.AMALGAE_BLOCK))
-						.build(new Identifier(Divide.MOD_ID, "amalgae_wetrack_bricks"), "")
-		);
-		RecipeManagerHelper.registerStaticRecipe(
 				VanillaRecipeBuilders.shapelessRecipe(new ItemStack(DivideBlocks.WETRACK_BUTTON))
 						.ingredient(new ItemStack(DivideBlocks.WETRACK))
 						.build(new Identifier(Divide.MOD_ID, "wetrack_button"), "")
 		);
-//		RecipeManagerHelper.registerStaticRecipe(
-//				VanillaRecipeBuilders.shapedRecipe(
-//						"I I",
-//						"BEB",
-//						"BBB")
-//						.output(new ItemStack(DivideBlocks.ENDER_CLEFT))
-//						.ingredient('I', Items.IRON_INGOT)
-//						.ingredient('B', Blocks.IRON_BLOCK)
-//						.ingredient('E', Items.ENDER_EYE)
-//						.build(new Identifier(Divide.MOD_ID, "ender_cleft"), "")
-//		);
 	}
 
 	public static void brickRecipe(Item input, Item output){

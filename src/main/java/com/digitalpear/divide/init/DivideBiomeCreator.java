@@ -25,10 +25,11 @@ import java.util.function.Predicate;
 
 public class DivideBiomeCreator {
 
-	protected static final int DEFAULT_WATER_COLOR = 4159204;
-	protected static final int DEFAULT_WATER_FOG_COLOR = 329011;
-	private static final int DEFAULT_FOG_COLOR = 12638463;
-	private static final int DEFAULT_SKY_COLOR = 12638463;
+	protected static final int DEFAULT_WATER_COLOR = 7028092;
+	protected static final int DEFAULT_WATER_FOG_COLOR = 5582947;
+	private static final int DEFAULT_FOG_COLOR = 7028092;
+	private static final int DEFAULT_SKY_COLOR = 7028092;
+
 	@Nullable
 	private static final MusicSound DEFAULT_MUSIC = null;
 
@@ -73,6 +74,7 @@ public class DivideBiomeCreator {
 
 		return createBiome(Biome.Precipitation.NONE, 0.5F, 0.5F, spawnBuilder, builder, DEFAULT_MUSIC);
 	}
+
 
 
 	private static Biome register(RegistryKey<Biome> key, Biome biome)

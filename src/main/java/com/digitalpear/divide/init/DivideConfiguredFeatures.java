@@ -59,7 +59,7 @@ public class DivideConfiguredFeatures {
 	public static final Holder<ConfiguredFeature<SimpleBlockFeatureConfig, ?>> AMALGAE_VEGETATION = register("amalgae_vegetation",
 			Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
 					.add(DivideBlocks.AMALGAE_BUSH.getDefaultState(), 1)
-					.add(Blocks.AIR.getDefaultState(), 12)
+					.add(Blocks.AIR.getDefaultState(), 8)
 					.build())));
 
 	public static final Holder<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> AMALGAE_PATCH = register("amalgae_patch",

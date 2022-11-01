@@ -7,7 +7,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 
 public class DivideBiomeTags {
-
 	public static final TagKey<Biome> IS_DIVIDE = register("is_divide");
 
 

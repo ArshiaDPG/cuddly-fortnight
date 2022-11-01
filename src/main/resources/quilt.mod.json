@@ -6,9 +6,10 @@
 		"version": "${version}",
 		"metadata": {
 			"name": "The Divide",
-			"description": "A short description of your mod.",
+			"description": "A dimension between dimensions.",
 			"contributors": {
 				"Coder": "DigitalPear",
+				"Certain Textures": "VakyPanda",
 				"Etc.": "CloakingPluto"
 			},
 			"contact": {

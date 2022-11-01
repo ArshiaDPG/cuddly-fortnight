@@ -28,32 +28,6 @@ public class EnderCleftBlock extends Block {
 		super(settings);
 	}
 
-//	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-//
-//		//Crashes the game right now
-//		if (world instanceof ServerWorld) {
-//			MinecraftServer minecraftServer = world.getServer();
-//			RegistryKey<World> registryKey = world.getRegistryKey() == DivideDimensions.DIVIDE_KEY ? World.OVERWORLD : DivideDimensions.DIVIDE_KEY;
-//			ServerWorld serverWorld2 = minecraftServer.getWorld(registryKey);
-//			if (serverWorld2 != null && minecraftServer.isNetherAllowed() && !player.hasVehicle()) {
-//				player.resetNetherPortalCooldown();
-//				player.moveToWorld(serverWorld2);
-//				player.world.getProfiler().pop();
-//			}
-//		}
-//
-//		Divide.LOGGER.info("Destination is not null.");
-//		return ActionResult.SUCCESS;
-//	}
-
-	@Override
-	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-		if (!world.getBlockState(pos.up()).isOf(Blocks.AIR) && !world.getBlockState(pos.up(2)).isOf(Blocks.AIR)) {
-			world.setBlockState(pos.up(), DivideBlocks.DIVIDE_PORTAL.getDefaultState(), 2);
-			world.setBlockState(pos.up(2), DivideBlocks.DIVIDE_PORTAL.getDefaultState(), 2);
-		}
-	}
-
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		return SHAPE;
 	}
