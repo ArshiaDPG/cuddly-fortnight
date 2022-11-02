@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "divide:divided_remains",
     "divide:amalgae_swamplands",
     "divide:obsidian_altars"
   ]

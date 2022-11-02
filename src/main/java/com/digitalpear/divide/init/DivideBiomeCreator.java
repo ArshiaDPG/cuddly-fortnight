@@ -52,18 +52,32 @@ public class DivideBiomeCreator {
 		spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMITE, 8, 2, 4));
 		spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMAN, 16, 1, 2));
 	}
-
-	public static Biome createAlgaeSwamplands() {
-		net.minecraft.world.biome.GenerationSettings.Builder builder = new net.minecraft.world.biome.GenerationSettings.Builder();
-		addDivideBasicFeatures(builder);
-
-		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_SWAMPLANDS_VEGETATION);
-		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_POOL);
-
+	public static void addEndermanPatches(net.minecraft.world.biome.GenerationSettings.Builder builder){
 		builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, DividePlacedFeatures.PATCH_GRASS);
 		builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, DividePlacedFeatures.PATCH_WARPED_NYLIUM);
 		builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, DividePlacedFeatures.PATCH_CRIMSON_NYLIUM);
 		builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, DividePlacedFeatures.PATCH_END_STONE);
+	}
+
+	public static Biome createDividedRemains(){
+		net.minecraft.world.biome.GenerationSettings.Builder builder = new net.minecraft.world.biome.GenerationSettings.Builder();
+		addDivideBasicFeatures(builder);
+		addEndermanPatches(builder);
+
+		SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+		addDivideBasicMobs(spawnBuilder);
+
+		return createBiome(Biome.Precipitation.NONE, 0.6F, 0.5F, spawnBuilder, builder, DEFAULT_MUSIC);
+	}
+	public static Biome createAlgaeSwamplands() {
+		net.minecraft.world.biome.GenerationSettings.Builder builder = new net.minecraft.world.biome.GenerationSettings.Builder();
+		addDivideBasicFeatures(builder);
+		addEndermanPatches(builder);
+
+		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_SWAMPLANDS_VEGETATION);
+		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_POOL);
+
+
 
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FLOWER_DEFAULT);
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NetherPlacedFeatures.WARPED_FOREST_VEGETATION);
@@ -102,6 +116,7 @@ public class DivideBiomeCreator {
 		return RegistryKey.of(Registry.BIOME_KEY, new Identifier(Divide.MOD_ID, id));
 	}
 
+	public static final RegistryKey<Biome> DIVIDED_REMAINS = createBiomeKey("divided_remains");
 	public static final RegistryKey<Biome> AMALGAE_SWAMPLANDS = createBiomeKey("amalgae_swamplands");
 	public static final RegistryKey<Biome> OBSIDIAN_ALTARS = createBiomeKey("obsidian_altars");
 
@@ -112,6 +127,8 @@ public class DivideBiomeCreator {
 	public static void init(){
 		register(AMALGAE_SWAMPLANDS, createAlgaeSwamplands());
 		register(OBSIDIAN_ALTARS, createObsidianAltars());
+		register(DIVIDED_REMAINS, createDividedRemains());
+
 		BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_COLD_OBSIDIAN.getKey().get());
 	}
 }

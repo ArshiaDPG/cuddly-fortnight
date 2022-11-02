@@ -56,8 +56,8 @@ public class DivideBlocks {
 	}
 
 
-	public static final Block WETRACK = createBlockWithItem("wetrack", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
-	public static final Block WETRACK_BRICKS = createBlockWithItem("wetrack_bricks", new WetrackBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
+	public static final Block WETRACK = createBlockWithItem("wetrack", new Block(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
+	public static final Block WETRACK_BRICKS = createBlockWithItem("wetrack_bricks", new Block(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
 
 
 
@@ -67,10 +67,10 @@ public class DivideBlocks {
 
 
 	public static final Block WETRACK_LAPIS_ORE = createBlockWithItem("wetrack_lapis_ore",
-			new WetrackOreBlock(createWetrackBlock(Blocks.DEEPSLATE_LAPIS_ORE),
+			new ExperienceDroppingBlock(createWetrackBlock(Blocks.DEEPSLATE_LAPIS_ORE),
 					UniformIntProvider.create(2, 5)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block WETRACK_IRON_ORE = createBlockWithItem("wetrack_iron_ore",
-			new WetrackOreBlock(createWetrackBlock(Blocks.DEEPSLATE_IRON_ORE),
+			new ExperienceDroppingBlock(createWetrackBlock(Blocks.DEEPSLATE_IRON_ORE),
 					UniformIntProvider.create(0, 3)), ItemGroup.BUILDING_BLOCKS);
 
 
