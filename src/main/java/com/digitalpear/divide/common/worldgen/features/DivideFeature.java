@@ -10,7 +10,7 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 
 public class DivideFeature {
 	public static final Feature<CountConfig> AMALGAE_BUSH = register("amalgae_bush", new AmalgaeBushFeature(CountConfig.CODEC));
-	public static final Feature<BasaltColumnsFeatureConfig> WETRACK_SPIKE = register("wetrack_spike", new WetrackSpikesFeature(BasaltColumnsFeatureConfig.CODEC));
+	public static final Feature<BasaltColumnsFeatureConfig> OBSIDIAN_SPIKE = register("obsidian_spike", new ObsidianSpikesFeature(BasaltColumnsFeatureConfig.CODEC));
 	public static final Feature<DripstoneClusterFeatureConfig> OBSIDIAN_CLUSTER = register("obsidian_cluster", new ObsidianClusterFeature(DripstoneClusterFeatureConfig.CODEC));
 
 	private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {

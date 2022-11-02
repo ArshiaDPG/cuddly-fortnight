@@ -7,13 +7,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
-import net.minecraft.structure.rule.BlockStateMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Holder;
 import net.minecraft.util.collection.DataPool;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.floatprovider.ClampedNormalFloatProvider;
 import net.minecraft.util.math.floatprovider.UniformFloatProvider;
@@ -21,8 +18,6 @@ import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.gen.CountConfig;
-import net.minecraft.world.gen.blockpredicate.BlockPredicate;
-import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.util.ConfiguredFeatureUtil;
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil;
@@ -92,8 +87,8 @@ public class DivideConfiguredFeatures {
 			Feature.SCATTERED_ORE, new OreFeatureConfig(OBSIDIAN, DivideBlocks.COLD_OBSIDIAN.getDefaultState(), 8));
 
 
-	public static final Holder<ConfiguredFeature<BasaltColumnsFeatureConfig, ?>> WETRACK_SPIKE = register("wetrack_spike",
-			DivideFeature.WETRACK_SPIKE, new BasaltColumnsFeatureConfig(UniformIntProvider.create(2, 3), UniformIntProvider.create(5, 10)));
+	public static final Holder<ConfiguredFeature<BasaltColumnsFeatureConfig, ?>> OBSIDIAN_SPIKE = register("obsidian_spike",
+			DivideFeature.OBSIDIAN_SPIKE, new BasaltColumnsFeatureConfig(UniformIntProvider.create(2, 3), UniformIntProvider.create(5, 10)));
 
 	public static final Holder<ConfiguredFeature<DripstoneClusterFeatureConfig, ?>> OBSIDIAN_CLUSTER = register("obsidian_cluster",
 			DivideFeature.OBSIDIAN_CLUSTER, new DripstoneClusterFeatureConfig(12, UniformIntProvider.create(3, 6), UniformIntProvider.create(2, 8), 1, 3,

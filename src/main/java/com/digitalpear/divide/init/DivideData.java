@@ -11,12 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DivideData {
-	public static Map<Block, Block> UNWETTING_MAP = new HashMap<>();
-
-	public static void registerUnwetting(Block input, Block result){
-		UNWETTING_MAP.put(input, result);
-	}
-
 
 	public static void registerFlammables(){
 		FlammableBlockRegistry.getDefaultInstance().add(DivideBlocks.AMALGAE_BLOCK, 5, 5);

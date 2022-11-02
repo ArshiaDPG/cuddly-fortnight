@@ -1,5 +1,7 @@
 {
   "block.divide.wetrack": "Wetrack",
+  "block.divide.wetrack_button": "Wetrack Button",
+  "block.divide.wetrack_pressure_plate": "Wetrack Pressure Plate",
   "block.divide.wetrack_iron_ore": "Wetrack Iron Ore",
   "block.divide.wetrack_lapis_ore": "Wetrack Lapis Ore",
   "block.divide.wetrack_bricks": "Wetrack Bricks",

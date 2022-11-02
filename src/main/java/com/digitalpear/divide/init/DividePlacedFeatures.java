@@ -4,7 +4,6 @@ import com.digitalpear.divide.Divide;
 import net.minecraft.util.Holder;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
@@ -62,9 +61,9 @@ public class DividePlacedFeatures {
 			PlacedFeatureUtil.BOTTOM_TO_MAX_TERRAIN_HEIGHT_RANGE, EnvironmentScanPlacementModifier.create(Direction.DOWN, BlockPredicate.solid(),
 					BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertical(ConstantIntProvider.create(1)), BiomePlacementModifier.getInstance());
 
-	
-	public static final Holder<PlacedFeature> WETRACK_SPIKE = PlacedFeatureUtil.register(Divide.getId("wetrack_spike"),
-			DivideConfiguredFeatures.WETRACK_SPIKE, CountOnEveryLayerPlacementModifier.create(2), BiomePlacementModifier.getInstance());
+
+	public static final Holder<PlacedFeature> OBSIDIAN_SPIKE = PlacedFeatureUtil.register(Divide.getId("obsidian_spike"),
+			DivideConfiguredFeatures.OBSIDIAN_SPIKE, CountOnEveryLayerPlacementModifier.create(2), BiomePlacementModifier.getInstance());
 
 	public static final Holder<PlacedFeature> OBSIDIAN_CLUSTER = PlacedFeatureUtil.register(Divide.getId("obsidian_cluster"),
 			DivideConfiguredFeatures.OBSIDIAN_CLUSTER, CountPlacementModifier.create(UniformIntProvider.create(3, 9)), InSquarePlacementModifier.getInstance(),

@@ -98,10 +98,6 @@ public class DivideBlocks {
 
 
 	public static void init(){
-		DivideData.registerUnwetting(WETRACK, Blocks.COBBLED_DEEPSLATE);
-		DivideData.registerUnwetting(WETRACK_BRICKS, Blocks.DEEPSLATE_BRICKS);
-		DivideData.registerUnwetting(WETRACK_LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE);
-		DivideData.registerUnwetting(WETRACK_IRON_ORE, Blocks.DEEPSLATE_IRON_ORE);
 
 	}
 

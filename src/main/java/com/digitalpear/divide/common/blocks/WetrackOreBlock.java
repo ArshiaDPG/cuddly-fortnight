@@ -37,36 +37,6 @@ public class WetrackOreBlock extends ExperienceDroppingBlock {
 	}
 
 
-	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-		if (player.getMainHandStack().isOf(Items.BUCKET) && DivideData.UNWETTING_MAP.containsKey(state.getBlock())){
-			unwetBlock(state, world, pos, player, hand);
-			return ActionResult.SUCCESS;
-		}
-		return ActionResult.FAIL;
-	}
-
-	public static void unwetBlock(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand){
-		player.swingHand(hand);
-		if (!player.isCreative()){
-			player.getMainHandStack().decrement(1);
-		}
-		player.giveItemStack(Items.WATER_BUCKET.getDefaultStack());
-		world.playSound(player, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0f, (1.0F + world.getRandom().nextFloat() * 0.2F) * 0.7F);
-		world.setBlockState(pos, DivideData.UNWETTING_MAP.get(state.getBlock()).getStateWithProperties(state));
-	}
-
-	public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
-		super.afterBreak(world, player, pos, state, blockEntity, stack);
-		if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 0) {
-			if (world.getDimension().ultraWarm()) {
-				world.removeBlock(pos, false);
-				return;
-			}
-			world.setBlockState(pos, Blocks.WATER.getDefaultState().with(Properties.LEVEL_1_8, 5));
-
-		}
-	}
-
 	public void onStacksDropped(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack, boolean dropExperience) {
 		super.onStacksDropped(state, world, pos, stack, dropExperience);
 		if (dropExperience) {

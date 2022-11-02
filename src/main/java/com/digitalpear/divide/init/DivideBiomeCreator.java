@@ -42,9 +42,8 @@ public class DivideBiomeCreator {
 	}
 
 	private static void addDivideBasicFeatures(net.minecraft.world.biome.GenerationSettings.Builder generationSettings) {
-		generationSettings.feature(GenerationStep.Feature.RAW_GENERATION, DividePlacedFeatures.WETRACK_SPIKE);
-		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_SWAMPLANDS_VEGETATION);
-		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_POOL);
+
+
 		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_WETRACK_IRON);
 		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_WETRACK_LAPIS);
 		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_WETRACK_IRON_SUFFOCATED);
@@ -57,7 +56,10 @@ public class DivideBiomeCreator {
 	public static Biome createAlgaeSwamplands() {
 		net.minecraft.world.biome.GenerationSettings.Builder builder = new net.minecraft.world.biome.GenerationSettings.Builder();
 		addDivideBasicFeatures(builder);
-		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.OBSIDIAN_CLUSTER);
+
+		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_SWAMPLANDS_VEGETATION);
+		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_POOL);
+
 		builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, DividePlacedFeatures.PATCH_GRASS);
 		builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, DividePlacedFeatures.PATCH_WARPED_NYLIUM);
 		builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, DividePlacedFeatures.PATCH_CRIMSON_NYLIUM);
@@ -72,7 +74,22 @@ public class DivideBiomeCreator {
 		addDivideBasicMobs(spawnBuilder);
 
 
+
 		return createBiome(Biome.Precipitation.NONE, 0.5F, 0.5F, spawnBuilder, builder, DEFAULT_MUSIC);
+	}
+	public static Biome createObsidianAltars(){
+		net.minecraft.world.biome.GenerationSettings.Builder builder = new net.minecraft.world.biome.GenerationSettings.Builder();
+		addDivideBasicFeatures(builder);
+
+		builder.feature(GenerationStep.Feature.RAW_GENERATION, DividePlacedFeatures.OBSIDIAN_SPIKE);
+		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.OBSIDIAN_CLUSTER);
+
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NetherPlacedFeatures.WARPED_FOREST_VEGETATION);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NetherPlacedFeatures.CRIMSON_FOREST_VEGETATION);
+
+		SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+		addDivideBasicMobs(spawnBuilder);
+		return createBiome(Biome.Precipitation.NONE, 0.3F, 0.4F, spawnBuilder, builder, DEFAULT_MUSIC);
 	}
 
 
@@ -86,6 +103,7 @@ public class DivideBiomeCreator {
 	}
 
 	public static final RegistryKey<Biome> AMALGAE_SWAMPLANDS = createBiomeKey("amalgae_swamplands");
+	public static final RegistryKey<Biome> OBSIDIAN_ALTARS = createBiomeKey("obsidian_altars");
 
 
 	public static Predicate<BiomeSelectionContext> foundInTheDivide() {
@@ -93,6 +111,7 @@ public class DivideBiomeCreator {
 	}
 	public static void init(){
 		register(AMALGAE_SWAMPLANDS, createAlgaeSwamplands());
+		register(OBSIDIAN_ALTARS, createObsidianAltars());
 		BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_ORES, DividePlacedFeatures.ORE_COLD_OBSIDIAN.getKey().get());
 	}
 }

@@ -18,14 +18,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
 
-public class WetrackSpikesFeature extends Feature<BasaltColumnsFeatureConfig> {
+public class ObsidianSpikesFeature extends Feature<BasaltColumnsFeatureConfig> {
 	private static final ImmutableList<Block> BLOCKS;
 	private static final int CLUSTERED_REACH = 5;
 	private static final int CLUSTERED_SIZE = 50;
 	private static final int UNCLUSTERED_REACH = 8;
 	private static final int UNCLUSTERED_SIZE = 15;
 
-	public WetrackSpikesFeature(Codec<BasaltColumnsFeatureConfig> codec) {
+	public ObsidianSpikesFeature(Codec<BasaltColumnsFeatureConfig> codec) {
 		super(codec);
 	}
 
@@ -78,7 +78,12 @@ public class WetrackSpikesFeature extends Feature<BasaltColumnsFeatureConfig> {
 
 			for(BlockPos.Mutable mutable = blockPos2.mutableCopy(); j >= 0; --j) {
 				if (isAirOrLavaOcean(world, seaLevel, mutable)) {
-					this.setBlockState(world, mutable, DivideBlocks.WETRACK.getDefaultState());
+					if (world.getRandom().nextFloat() > 0.9){
+						this.setBlockState(world, mutable, DivideBlocks.COLD_OBSIDIAN.getDefaultState());
+					}
+					else{
+						this.setBlockState(world, mutable, Blocks.OBSIDIAN.getDefaultState());
+					}
 					mutable.move(Direction.UP);
 					bl = true;
 				} else {
