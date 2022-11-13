@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "divide:block/amalgae_mushroom"
+  }
+}

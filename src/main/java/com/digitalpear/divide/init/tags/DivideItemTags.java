@@ -12,4 +12,5 @@ public class DivideItemTags {
 	private static TagKey<Item> register(String id) {
 		return TagKey.of(Registry.ITEM_KEY, new Identifier(Divide.MOD_ID, id));
 	}
+	public static final TagKey<Item> FUNGUS_DROPS = register("fungus_drops");
 }

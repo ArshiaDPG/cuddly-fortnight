@@ -2,6 +2,8 @@ package com.digitalpear.divide;
 
 import com.digitalpear.divide.init.*;
 import com.digitalpear.divide.common.worldgen.DivideDimensions;
+import com.digitalpear.divide.init.generators.DivideBlockstates;
+import com.digitalpear.divide.init.generators.DivideRecipes;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
@@ -26,6 +28,8 @@ public class Divide implements ModInitializer {
 		DividePlacedFeatures.init();
 		DivideBiomeCreator.init();
 		DivideDimensions.init();
+
+
 		DivideRecipes.init();
 
 		CustomPortalBuilder.beginPortal()

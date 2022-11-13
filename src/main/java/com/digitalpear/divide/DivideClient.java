@@ -12,6 +12,7 @@ public class DivideClient implements ClientModInitializer {
 	public void onInitializeClient(ModContainer mod) {
 		BlockRenderLayerMap.put(RenderLayer.getCutout(), DivideBlocks.AMALGAE_BUSH);
 		BlockRenderLayerMap.put(RenderLayer.getCutout(), DivideBlocks.ENDER_CLEFT);
-
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), DivideBlocks.AMALGAE_MUSHROOM);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), DivideBlocks.POTTED_AMALGAE_MUSHROOM);
 	}
 }

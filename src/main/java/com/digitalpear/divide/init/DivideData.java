@@ -1,14 +1,6 @@
 package com.digitalpear.divide.init;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.Fluids;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class DivideData {
 
@@ -19,5 +11,4 @@ public class DivideData {
 	public static void init(){
 		registerFlammables();
 	}
-
 }

@@ -76,6 +76,7 @@ public class DivideBiomeCreator {
 
 		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_SWAMPLANDS_VEGETATION);
 		builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, DividePlacedFeatures.AMALGAE_POOL);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, DividePlacedFeatures.HUGE_AMALGAE_MUSHROOM);
 
 
 

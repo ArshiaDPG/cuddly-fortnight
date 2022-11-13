@@ -1,6 +1,7 @@
-package com.digitalpear.divide.init;
+package com.digitalpear.divide.init.generators;
 
 import com.digitalpear.divide.Divide;
+import com.digitalpear.divide.init.DivideBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
