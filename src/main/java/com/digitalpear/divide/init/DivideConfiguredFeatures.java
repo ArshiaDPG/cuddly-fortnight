@@ -78,8 +78,8 @@ public class DivideConfiguredFeatures {
 					VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3), 0.8F, 5, 0.1F, UniformIntProvider.create(4, 7), 0.7F));
 
 	public static final Holder<ConfiguredFeature<HugeMushroomFeatureConfig, ?>> HUGE_AMALGAE_MUSHROOM = register("huge_amalgae_mushroom",
-			DivideFeature.HUGE_AMALGAE_MUSHROOM, new HugeMushroomFeatureConfig(BlockStateProvider.of(DivideBlocks.AMALGAE_MUSHROOM_BLOCK.getDefaultState()
-					.with(MushroomBlock.UP, true).with(MushroomBlock.DOWN, false)),
+			DivideFeature.HUGE_AMALGAE_MUSHROOM, new HugeMushroomFeatureConfig(
+					BlockStateProvider.of(DivideBlocks.AMALGAE_MUSHROOM_BLOCK.getDefaultState().with(MushroomBlock.UP, true).with(MushroomBlock.DOWN, false)),
 					BlockStateProvider.of(Blocks.MUSHROOM_STEM.getDefaultState().with(MushroomBlock.UP, false).with(MushroomBlock.DOWN, false)), 3));
 
 

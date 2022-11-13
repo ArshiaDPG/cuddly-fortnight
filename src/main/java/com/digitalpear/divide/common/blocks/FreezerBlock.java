@@ -5,11 +5,15 @@ import com.digitalpear.divide.init.DivideData;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -19,6 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class FreezerBlock extends Block {
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
@@ -54,18 +59,28 @@ public class FreezerBlock extends Block {
 			}
 		}
 	}
+
+	@Override
+	public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+		if (world.isReceivingRedstonePower(pos) || world.getDimension().ultraWarm()){
+			world.setBlockState(pos, state.with(POWERED, true), 2);
+		}
+		super.onPlaced(world, pos, state, placer, itemStack);
+	}
+
+
 	public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
 		if (!world.isClient) {
-			boolean bl = world.isReceivingRedstonePower(pos);
+			boolean bl = world.isReceivingRedstonePower(pos) || world.getDimension().ultraWarm();
 			if (bl != state.get(POWERED)) {
 				world.setBlockState(pos, state.with(POWERED, bl), 2);
 			}
-
 			if (!state.get(POWERED)){
 				freeze(world, pos);
 			}
 		}
 	}
+
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		builder.add(FACING, POWERED);
 	}
@@ -108,5 +123,11 @@ public class FreezerBlock extends Block {
 				}
 			}
 		}
+	}
+
+	@Nullable
+	@Override
+	public BlockState getPlacementState(ItemPlacementContext ctx) {
+		return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
 	}
 }
