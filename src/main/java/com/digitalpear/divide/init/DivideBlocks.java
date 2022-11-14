@@ -76,6 +76,8 @@ public class DivideBlocks {
 	public static final Block WETRACK_BRICK_SLAB = createBlockWithItem("wetrack_brick_slab", new SlabBlock(createWetrackBlock()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block WETRACK_BRICK_WALL = createBlockWithItem("wetrack_brick_wall", new WallBlock(createWetrackBlock()), ItemGroup.DECORATIONS);
 
+	public static final Block INFESTED_WETRACK = createBlockWithItem("infested_wetrack", new InfestedWetrackBlock(WETRACK, createWetrackBlock()), ItemGroup.DECORATIONS);
+	public static final Block INFESTED_WETRACK_BRICKS = createBlockWithItem("infested_wetrack_bricks", new InfestedWetrackBlock(WETRACK_BRICKS, createWetrackBlock()), ItemGroup.DECORATIONS);
 
 
 	public static final Block AMALGAE_BLOCK = createBlockWithItem("amalgae_block", new AmalgaeBlock(AbstractBlock.Settings.copy(Blocks.MOSS_BLOCK).sounds(BlockSoundGroup.CROP).mapColor(AMALGAE_COLOR)), ItemGroup.BUILDING_BLOCKS);
